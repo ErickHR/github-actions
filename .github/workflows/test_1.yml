@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: Hola Mundo2
         run: echo "¡Hola, mundo!"
+      - name: touch
+        run: touch file.txt
+      - name: write file
+        run: echo "prueba actions"  >> file.txt
+      - name: read file
+        run: cat file.txt
 
   other:
     runs-on: ubuntu-latest
