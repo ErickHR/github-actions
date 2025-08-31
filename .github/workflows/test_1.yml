@@ -4,8 +4,15 @@ name: Hola Mundo1
 on: [push]
 
 jobs:
-  hola:
+  holaone:
     runs-on: ubuntu-latest
     steps:
       - name: Hola Mundo2
         run: echo "¡Hola, mundo!"
+
+  other:
+    runs-on: ubuntu-latest
+    steps:
+      - name: LS
+        run: ls -al
+
