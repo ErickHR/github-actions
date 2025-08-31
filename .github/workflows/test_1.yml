@@ -1,33 +1,12 @@
+name: work flow name
 
-name: Hola Mundo2
-# prueba
-# on: [push, pull_request]
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  holatwo-main:
+  job-one:
     runs-on: ubuntu-latest
     steps:
-      - name: Hola Mundo2-main
-        run: echo "¡Hola, mundo!"
-      - name: touch
-        run: touch file.txt
-      - name: write file-main
-        run: echo "prueba actions"  >> file.txt
-      - name: read file-main
-        run: cat file.txt
-
-  other-two-main:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5.0.0
-      - name: LS-main
-        run: ls -al
-
+      - name: imprimir ls
+        run: |
+          ls -la
+          echo "imprimiendo todo"
