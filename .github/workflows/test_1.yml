@@ -1,24 +1,31 @@
 
-name: Hola Mundo1
-
-on: [push, pull_request]
+name: Hola Mundo2
+# prueba
+# on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  holaone:
+  holatwo-main:
     runs-on: ubuntu-latest
     steps:
-      - name: Hola Mundo2
+      - name: Hola Mundo2-main
         run: echo "¡Hola, mundo!"
       - name: touch
         run: touch file.txt
-      - name: write file
+      - name: write file-main
         run: echo "prueba actions"  >> file.txt
-      - name: read file
+      - name: read file-main
         run: cat file.txt
 
-  other:
+  other-two-main:
     runs-on: ubuntu-latest
     steps:
-      - name: LS
+      - name: LS-main
         run: ls -al
 
