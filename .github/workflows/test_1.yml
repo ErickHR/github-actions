@@ -1,10 +1,10 @@
 
-name: Hola Mundo1
+name: Hola Mundo2
 
 on: [push, pull_request]
 
 jobs:
-  holaone:
+  holatwo:
     runs-on: ubuntu-latest
     steps:
       - name: Hola Mundo2
@@ -16,7 +16,7 @@ jobs:
       - name: read file
         run: cat file.txt
 
-  other:
+  other-two:
     runs-on: ubuntu-latest
     steps:
       - name: LS
