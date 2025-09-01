@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   install-node:
-    runs-on: ubuntu-lastet
+    runs-on: ubuntu-latest
     steps:
       - name: install node Setup Node.js
         uses: actions/setup-node@v4.4.0
