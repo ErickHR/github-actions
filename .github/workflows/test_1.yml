@@ -6,8 +6,10 @@ jobs:
   install-node:
     runs-on: ubuntu-latest
     steps:
+      - name: checkoutactions
+        uses: actions/checkout@v4
       - name: checkout code
-        uses: ./github/actions/test-action
+        uses: ./github/actions/test-action/action.yml
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
