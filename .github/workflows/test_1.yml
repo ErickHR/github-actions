@@ -6,17 +6,19 @@ jobs:
   install-node:
     runs-on: ubuntu-latest
     steps:
-      - name: install node Setup Node.js
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: latest
-      - name: version node setup
-        run: node --version
-      - name: install php test
-        uses: shivammathur/setup-php@2.35.4
-        with:
-          php-version: '8.3'
-      - name: version for php
-        run: php --version
+      - name: checkout code
+        uses: ./github/actions/test-action
+      # - name: install node Setup Node.js
+      #   uses: actions/setup-node@v4.4.0
+      #   with:
+      #     node-version: latest
+      # - name: version node setup
+      #   run: node --version
+      # - name: install php test
+      #   uses: shivammathur/setup-php@2.35.4
+      #   with:
+      #     php-version: '8.3'
+      # - name: version for php
+      #   run: php --version
         
 

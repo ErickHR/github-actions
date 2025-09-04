@@ -1,0 +1,7 @@
+name: "my action custom"
+description: "This is a custom action"
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Hello from my custom action!"
