@@ -28,7 +28,8 @@ jobs:
         uses: ./.github/actions/test-action
         with:
           message: "custom message for checkout code test $VAR_GENERAL"
-      - env:
+      - name: test env
+        env:
           VAR_RUNS: localhost
         run: echo "this is a test for env $VAR_RUNS"
       # - name: install node Setup Node.js
