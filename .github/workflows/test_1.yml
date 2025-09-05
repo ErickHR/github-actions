@@ -18,13 +18,19 @@ jobs:
           - 6379:6379
         env:
           REDIS_PASSWORD: password
+    
+    env:
+      VAR_GENERAL: localhost
     steps:
       - name: checkoutactions
         uses: actions/checkout@v4
       - name: checkout code
         uses: ./.github/actions/test-action
         with:
-          message: "custom message for checkout code test"
+          message: "custom message for checkout code test $VAR_GENERAL"
+      - env:
+          VAR_RUNS: localhost
+        run: echo "this is a test for env $VAR_RUNS"
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
