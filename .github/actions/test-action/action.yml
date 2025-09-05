@@ -9,6 +9,12 @@ inputs:
 
 runs:
   using: "composite"
+  service:
+    image: "mysql:5.7"
+    ports:
+      - 3306:3306
+    env:
+      MYSQL_ROOT_PASSWORD: password
   steps:
     - name: "Run a script custom"
       run: echo "Hello from my custom action!  ${{ inputs.message }}"
