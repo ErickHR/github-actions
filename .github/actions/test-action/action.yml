@@ -1,6 +1,10 @@
 name: "my action custom"
 description: "This is a custom action"
 
+inputs:
+  name-message:
+    description: "name for custom"
+
 runs:
   using: "composite"
   steps:

@@ -10,6 +10,8 @@ jobs:
         uses: actions/checkout@v4
       - name: checkout code
         uses: ./.github/actions/test-action
+        with:
+          name-message: "custom message for checkout code test"
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
