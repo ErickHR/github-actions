@@ -12,6 +12,12 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: password
+      redis-test:
+        image: "redis:latest"
+        ports:
+          - 6379:6379
+        env:
+          REDIS_PASSWORD: password
     steps:
       - name: checkoutactions
         uses: actions/checkout@v4
