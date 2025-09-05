@@ -2,11 +2,14 @@ name: "my action custom"
 description: "This is a custom action"
 
 inputs:
-  name-message:
+  message:
     description: "name for custom"
+    required: true
+    default: "default message"
 
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello from my custom action!"
+    - name: "Run a script custom"
+      run: echo "Hello from my custom action!  ${{ inputs.message }}"
       shell: bash
