@@ -37,7 +37,7 @@ jobs:
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
       - name: show var
         env:
-          VAR_SECRET_TEST: ${{ secrets.VAR_SECRET_TEST }}
+          VAR_SECRET_TEST: ${{ vars.VAR_SECRET_TEST }}
           VAR_SECRET_TEST_ONE: "ErickHR"
         run: echo "this is a var $VAR_SECRET_TEST" "this is a var two $VAR_SECRET_TEST_ONE"
       - name: show secret var
