@@ -35,12 +35,17 @@ jobs:
         # si se desea usar variables y secrets que se colocan en github
         # run: echo "this is a var ${{ vars.MY_VAR}}"
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
+      - name: show var
+        run: echo "this is a var ${{ vars.VAR_SECRET_TEST}}"
       - name: show secret var
         run: |
           mkdir -p ~/.ssh
-          echo ${{secrets.AWS_SSH_SECRET}} >> ~/.ssh/id_rsa
+          echo "${{ secrets.AWS_SSH_SECRET }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
+      - name: cat config
+        run: cat ~/.ssh/config
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
