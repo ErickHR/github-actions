@@ -36,7 +36,7 @@ jobs:
         # run: echo "this is a var ${{ vars.MY_VAR}}"
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
       - name: show var
-        run: echo "this is a var ${{ vars.VAR_SECRET_TEST}}"
+        run: echo "this is a var ${{ vars.VAR_SECRET_TEST }}"
       - name: show secret var
         run: |
           mkdir -p ~/.ssh
@@ -46,6 +46,10 @@ jobs:
           cat ~/.ssh/known_hosts
       - name: cat id_rsa
         run: cat ~/.ssh/id_rsa
+      - name: show secret var two
+        run: |
+          echo "${{ secrets.AWS_SSH_SECRET_TWO }}" >> ~/erichj.text
+          cat ~/erichj.text
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
