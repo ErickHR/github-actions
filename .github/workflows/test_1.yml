@@ -1,16 +1,57 @@
 
-name: Hola Mundo2
-# prueba
-# on: [push, pull_request]
+name: Fixed Variable Test Workflow
+# Fixed workflow to properly handle variables and debug empty values
 on:
   push:
     branches:
       - main
+      - feature/actions-ejm-6-show-secrets-var
   pull_request:
     branches:
       - main
 
 jobs:
+  test-variables:
+    runs-on: ubuntu-latest
+    env:
+      VAR_GENERAL: localhost
+    steps:
+      - name: Debug Variables and Environment
+        run: |
+          echo "=== Debugging Variable Values ==="
+          echo "VAR_GENERAL: $VAR_GENERAL"
+          echo "Repository variable VAR_SECRET_TEST: '${{ vars.VAR_SECRET_TEST }}'"
+          echo "Length of VAR_SECRET_TEST: ${#VAR_SECRET_TEST}"
+          echo "Available vars context: ${{ toJSON(vars) }}"
+          echo "=================================="
+        env:
+          VAR_SECRET_TEST: ${{ vars.VAR_SECRET_TEST }}
+      
+      - name: Use Variable with Proper Error Handling
+        run: |
+          MESSAGE="${{ vars.VAR_SECRET_TEST }}"
+          echo "Raw MESSAGE value: '$MESSAGE'"
+          
+          # Check if variable is empty or not set
+          if [ -z "$MESSAGE" ]; then
+            echo "❌ ISSUE FOUND: VAR_SECRET_TEST is empty or not configured"
+            echo "📋 To fix this issue:"
+            echo "  1. Go to your repository Settings"
+            echo "  2. Navigate to 'Secrets and variables' → 'Actions'"
+            echo "  3. In the 'Variables' tab, create a new variable:"
+            echo "     - Name: VAR_SECRET_TEST"
+            echo "     - Value: Hola soy add variable desde github"
+            echo "  4. Save and re-run the workflow"
+            exit 1
+          elif [ "$MESSAGE" == "Hola soy add variable desde github" ]; then
+            echo "✅ SUCCESS: Variable is correctly configured!"
+            echo "Message content: $MESSAGE"
+          else
+            echo "⚠️  WARNING: Variable is set but has unexpected value"
+            echo "Expected: 'Hola soy add variable desde github'"
+            echo "Actual: '$MESSAGE'"
+          fi
+
   holatwo-main:
     runs-on: ubuntu-latest
     steps:
