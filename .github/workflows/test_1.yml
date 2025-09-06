@@ -44,8 +44,8 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           cat ~/.ssh/known_hosts
-      - name: cat config
-        run: cat ~/.ssh/config
+      - name: cat id_rsa
+        run: cat ~/.ssh/id_rsa
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
