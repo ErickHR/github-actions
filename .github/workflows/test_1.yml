@@ -39,7 +39,11 @@ jobs:
         env:
           MESSAGE: ${{ vars.VAR_SECRET_TEST }}  # Se puede mostrar en logs
         run: |
-          echo "Message: $MESSAGE"  # Se ve en logs: "Hola soy add variable desde github"
+          if [ "$MESSAGE" == "Hola soy add variable desde github" ]; then
+            echo "La variable se ha establecido correctamente."
+          else
+            echo "La variable no se ha establecido correctamente."
+          fi
       - name: show secret var
         run: |
           mkdir -p ~/.ssh
