@@ -5,39 +5,13 @@ on: [push]
 jobs:
   install-node:
     runs-on: ubuntu-latest
-    # services:
-    #   mysql:
-    #     image: "mysql:5.7"
-    #     ports:
-    #       - 3306:3306
-    #     env:
-    #       MYSQL_ROOT_PASSWORD: password
-    #   redis-test:
-    #     image: "redis:latest"
-    #     ports:
-    #       - 6379:6379
-    #     env:
-    #       REDIS_PASSWORD: password
-    
+    environment: SECRET-VAR
     env:
       VAR_GENERAL: localhost
     steps:
-      # - name: checkoutactions
-      #   uses: actions/checkout@v4
-      # - name: checkout code
-      #   uses: ./.github/actions/test-action
-      #   with:
-      #     message: "custom message for checkout code test $VAR_GENERAL"
-      # - name: test env
-      #   env:
-      #     VAR_RUNS: localhost
-      #   run: echo "this is a test for env $VAR_RUNS"
-        # si se desea usar variables y secrets que se colocan en github
-        # run: echo "this is a var ${{ vars.MY_VAR}}"
-        # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
       - name: Use variable
         env:
-          MESSAGE: ${{ vars.VAR_SECRET_TEST }}  # Se puede mostrar en logs
+          MESSAGE: ${{ vars.VAR_SECRET_TEST }} 
         run: |
           if [ "$MESSAGE" == "Hola soy add variable desde github" ]; then
             echo "La variable se ha establecido correctamente."
@@ -57,17 +31,5 @@ jobs:
         run: |
           echo "${{ secrets.AWS_SSH_SECRET_TWO }}" >> ~/erichj.text
           cat ~/erichj.text
-      # - name: install node Setup Node.js
-      #   uses: actions/setup-node@v4.4.0
-      #   with:
-      #     node-version: latest
-      # - name: version node setup 
-      #   run: node --version
-      # - name: install php test
-      #   uses: shivammathur/setup-php@2.35.4
-      #   with:
-      #     php-version: '8.3'
-      # - name: version for php
-      #   run: php --version
         
 
