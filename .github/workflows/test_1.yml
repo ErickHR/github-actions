@@ -35,11 +35,11 @@ jobs:
         # si se desea usar variables y secrets que se colocan en github
         # run: echo "this is a var ${{ vars.MY_VAR}}"
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
-      - name: show var
+      - name: Use variable
         env:
-          VAR_SECRET_TEST: ${{ vars.VAR_SECRET_TEST }}
-          VAR_SECRET_TEST_ONE: "ErickHR"
-        run: echo "this is a var $VAR_SECRET_TEST" "this is a var two $VAR_SECRET_TEST_ONE"
+          MESSAGE: ${{ vars.VAR_SECRET_TEST }}  # Se puede mostrar en logs
+        run: |
+          echo "Message: $MESSAGE"  # Se ve en logs: "Hola soy add variable desde github"
       - name: show secret var
         run: |
           mkdir -p ~/.ssh
