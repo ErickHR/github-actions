@@ -22,19 +22,25 @@ jobs:
     env:
       VAR_GENERAL: localhost
     steps:
-      - name: checkoutactions
-        uses: actions/checkout@v4
-      - name: checkout code
-        uses: ./.github/actions/test-action
-        with:
-          message: "custom message for checkout code test $VAR_GENERAL"
-      - name: test env
-        env:
-          VAR_RUNS: localhost
-        run: echo "this is a test for env $VAR_RUNS"
+      # - name: checkoutactions
+      #   uses: actions/checkout@v4
+      # - name: checkout code
+      #   uses: ./.github/actions/test-action
+      #   with:
+      #     message: "custom message for checkout code test $VAR_GENERAL"
+      # - name: test env
+      #   env:
+      #     VAR_RUNS: localhost
+      #   run: echo "this is a test for env $VAR_RUNS"
         # si se desea usar variables y secrets que se colocan en github
         # run: echo "this is a var ${{ vars.MY_VAR}}"
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
+      - name: show secret var
+        run: |
+          mkdir -p ~/.ssh
+          echo ${{secrets.AWS_SSH_SECRET}} >> ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
       # - name: install node Setup Node.js
       #   uses: actions/setup-node@v4.4.0
       #   with:
