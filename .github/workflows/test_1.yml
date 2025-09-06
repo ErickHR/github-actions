@@ -21,6 +21,7 @@ jobs:
     
     env:
       VAR_GENERAL: localhost
+      VAR_SECRET_TEST: ${{ vars.VAR_SECRET_TEST }}
     steps:
       # - name: checkoutactions
       #   uses: actions/checkout@v4
@@ -36,7 +37,7 @@ jobs:
         # run: echo "this is a var ${{ vars.MY_VAR}}"
         # run: echo "this is a secret ${{ secrets.MY_SECRET}}"
       - name: show var
-        run: echo "this is a var ${{ vars.VAR_SECRET_TEST }}"
+        run: echo "this is a var $VAR_SECRET_TEST"
       - name: show secret var
         run: |
           mkdir -p ~/.ssh
